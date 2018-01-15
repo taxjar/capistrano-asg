@@ -42,7 +42,7 @@ def autoscale(groupname, *args)
       puts "Autoscaling: Skipping unhealthy instance #{asg_instance.id}"
     else
       ec2_instance = ec2_resource.instance(asg_instance.id)
-      hostname = ec2_instance.private_ip_address
+      hostname = ec2_instance.public_ip_address
       puts "Autoscaling: Adding server #{hostname}"
       server(hostname, *args)
     end
